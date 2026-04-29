@@ -98,6 +98,13 @@ def handle_message(event):
       return Response(status_code=200)
   ```
 
+### ⚠️ AI 模型選擇 (Gemini)
+- **推薦模型**：優先使用 `gemini-2.5-flash`，以避免某些區域 v1beta 版本找不到 `1.5-flash` 的問題。
+- **解析格式**：要求 LLM 只回傳純 JSON 字串，並在程式端處理可能的 Markdown 標籤（如 ```json ... ```）。
+
+### ⚠️ Flex Message 常見錯誤
+- **dict vs json**：在 v3 SDK 中，`FlexContainer.from_dict()` 接收 Python 字典 (dict)，而 `FlexContainer.from_json()` 接收 JSON 字串。開發時請確保型別正確。
+
 ---
 
 ## 5. 事件類型與訊息類型列表
