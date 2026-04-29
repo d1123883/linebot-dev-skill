@@ -62,7 +62,12 @@ def handle_message(event):
     asyncio.run(process_message(event))
 
 async def process_message(event):
+    user_id = event.source.user_id
     user_input = event.message.text
+    
+    # 紀錄互動紀錄
+    await db.log_interaction(user_id, user_input)
+    
     intent = await ai.analyze_intent(user_input)
     
     action = intent.get("action")

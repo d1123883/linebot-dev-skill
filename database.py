@@ -13,6 +13,19 @@ async def init_db():
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS logs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                message TEXT NOT NULL,
+                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        await db.commit()
+
+async def log_interaction(user_id: str, message: str):
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute("INSERT INTO logs (user_id, message) VALUES (?, ?)", (user_id, message))
         await db.commit()
 
 async def add_to_watchlist(user_id: str, symbol: str):
