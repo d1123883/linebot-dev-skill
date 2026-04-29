@@ -97,27 +97,32 @@ ngrok http 8000
 
 ## 心得報告
 
-**姓名**：
-**學號**：
+**姓名**：吳東霖
+**學號**：D1123883
 
 **Q1. 你在 `/linebot-implement` Skill 的「注意事項」寫了哪些規則？為什麼這樣寫？**
 
-> （在此填寫）
+> 1. 必須使用官方 SDK
+> 2. 必須使用 FastAPI
+> 3. 必須使用 SQLite
+> 4. 必須使用 Gemini
+> 5. 必須使用 yfinance
+> 6. 必須使用 flex message
 
 ---
 
 **Q2. 你的 Skill 第一次執行後，AI 產出的程式直接能跑嗎？需要修改哪些地方？修改後有沒有更新 Skill？**
 
-> （在此填寫）
+> 只能反應及時價格，gemini沒有說話，所以修改skill，增加對話跟回覆功能。
 
 ---
 
 **Q3. 你遇到什麼問題是 AI 沒辦法自己解決、需要你介入處理的？**
 
-> （在此填寫）
+> 我需要找到line的Token跟Channel Secret才能讓Line Developer跟AI產生對話。
 
 ---
 
 **Q4. 如果你要把這個 LINE Bot 讓朋友使用，你還需要做什麼？**
 
-> （在此填寫）
+> 我需要將Line Developer跟Cloud Run的設定弄好，再讓朋友使用。
