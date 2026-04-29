@@ -78,7 +78,9 @@ async def process_message(event):
         data = stock.get_stock_data(symbol)
         if data:
             flex = fb.build_stock_flex(data)
-            await reply(event.reply_token, [flex])
+            # 讓 Gemini 說話
+            ai_comment = await ai.get_ai_analysis(symbol, data)
+            await reply(event.reply_token, [flex, TextMessage(text=ai_comment)])
         else:
             await reply(event.reply_token, [TextMessage(text=f"抱歉，找不到股票代號 {symbol}")])
             

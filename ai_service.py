@@ -52,3 +52,15 @@ async def analyze_intent(user_input: str):
             if digits:
                 return {"action": "query", "symbol": f"{digits}.TW"}
         return {"action": "unknown"}
+
+async def get_ai_analysis(symbol: str, data: dict):
+    """
+    根據股價資料讓 Gemini 產生一段短評。
+    """
+    try:
+        prompt = f"請根據以下股票資料提供一段大約 50 字的簡短分析或鼓勵語：\n股票：{data['name']}({symbol})\n現價：{data['price']}\n漲跌：{data['change']}({data['change_pct']}%)"
+        response = model.generate_content(prompt)
+        return response.text.strip()
+    except Exception as e:
+        print(f"AI Analysis error: {e}")
+        return "這是您查詢的股票資訊，祝您投資順利！"
