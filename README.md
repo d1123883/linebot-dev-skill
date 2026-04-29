@@ -126,3 +126,4 @@ ngrok http 8000
 **Q4. 如果你要把這個 LINE Bot 讓朋友使用，你還需要做什麼？**
 
 > 我需要將Line Developer跟Cloud Run的設定弄好，再讓朋友使用。
+> Git: fatal: cannot lock ref 'HEAD': is at 43cfdb58fe7dc1f2dd0cf2d7c169bf1d4d396753 but expected 69806d7b5272d469e901f163a0a5a8145d5c738c
